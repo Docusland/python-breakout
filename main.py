@@ -1,9 +1,11 @@
 # Tutorial from : https://www.101computing.net/breakout-tutorial-using-pygame-getting-started/
+"""
+Breakout game.
 
+"""   
 import pygame
 from colors import *
 from constants import *
-# Let's import the Paddle Class & the Ball Class
 from models import Paddle, Ball, Brick
 
 class Game:
@@ -15,7 +17,7 @@ class Game:
         self.score = 0
         self.lives = 3
         self.screen = None # Main pygame application.
-        self.carryOn = True
+        self.carryOn = True # Variable used as game loop. If False, quits the game. 
         self.paddle = self.ball = None
 
         self.__open_window_interface()
@@ -51,6 +53,10 @@ class Game:
         self.__generate_bricks()
 
     def __generate_bricks(self):
+        """ 
+            Generate bricks that will be displayed on the starting screen.
+            Adds them to the all_sprites_list and all_bricks containers.
+        """
         BRICK_WIDTH = 80
         BRICK_HEIGHT = 30
         for i in range(7):
@@ -78,13 +84,12 @@ class Game:
                 self.carryOn = False  # Flag that we are done so we exit this loop
 
     def move_paddle_on_key_events(self):
-        MOVE_VELOCITY = 5
         # Moving the paddle when the use uses the arrow keys
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
-            self.paddle.moveLeft(MOVE_VELOCITY)
+            self.paddle.moveLeft(PADDLE_VELOCITY)
         if keys[pygame.K_RIGHT]:
-            self.paddle.moveRight(MOVE_VELOCITY)
+            self.paddle.moveRight(PADDLE_VELOCITY)
 
     def check_if_ball_bounces_on_wall(self):
         # Check if the ball is bouncing against any of the 4 walls:

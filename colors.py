@@ -1,3 +1,7 @@
+"""
+File containing color constants.
+"""
+
 WHITE = (255, 255, 255)
 DARKBLUE = (36, 90, 190)
 LIGHTBLUE = (0, 176, 240)
